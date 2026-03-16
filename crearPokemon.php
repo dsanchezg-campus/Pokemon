@@ -43,12 +43,14 @@ session_start();
                 </select>
             </article>
             <article class="campo-form">
-                <label for="ataque">Ataque: </label>
-                <input type="text" name="ataque" id="ataque" required>
-                <label for="damage">Daño: </label>
-                <input type="number" name="damage" id="damage" required>
+                <label for="movimiento">Movimiento: </label>
+                <input type="text" name="movimiento" id="movimiento" required>
+                <label for="potencia">Potencia: </label>
+                <input type="number" name="potencia" id="potencia" required>
                 <label for="precision">Precisión: </label>
                 <input type="number" min="10" max="100" name="precision" id="precision" required>
+                <label for="usos">Usos: </label>
+                <input type="number" name="usos" id="usos" min="5" max="30" required>
             </article>
             <article class="campo-form">
                 <label for="vida">Vida: </label>
