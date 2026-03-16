@@ -35,9 +35,12 @@ session_start();
             </article>
             <article class="campo-form">
                 <p><label for="elemento">Elementos: </label></p>
-                <input type="text" name="elemento[]" id="elemento" required>
-                <input type="text" name="elemento[]" id="elemento">
-                <input type="text" name="elemento[]" id="elemento">
+                <select name="elemento[]" id="elemento" required>
+                    <option value=""></option>
+                    <option value="agua">Agua</option>
+                    <option value="fuego">Fuego</option>
+                    <option value="planta">Planta</option>
+                </select>
             </article>
             <article class="campo-form">
                 <label for="ataque">Ataque: </label>
@@ -56,7 +59,7 @@ session_start();
     </section>
 
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nombre"]) && isset($_POST["tipo"]) && isset($_POST["elemento"]) && isset($_POST["ataque"]) && isset($_POST["damage"]) && isset($_POST["vida"]) && isset($_POST["precision"])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nombre"]) && isset($_POST["tipo"]) && isset($_POST["elemento[]"]) && isset($_POST["ataque"]) && isset($_POST["damage"]) && isset($_POST["vida"]) && isset($_POST["precision"])) {
         $nombre = $_POST["nombre"];
         $tipo = $_POST["tipo"];
         $elemento = $_POST["elemento"];
