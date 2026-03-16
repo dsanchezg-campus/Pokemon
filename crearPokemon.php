@@ -15,10 +15,10 @@ session_start();
 </head>
 <body>
     <nav class="cabecera">
-        <img src="" alt="pokeball">
+        <img src="logo.png" alt="pokeball">
         <ul class="navegacion">
             <li><a href="crearPokemon.php">Eclosiona un Pokemon</a></li>
-            <li><a href="miPC.php"><h1>Mi PC</h1></a></li>
+            <li><a href="miPC.php">Mi PC</a></li>
             <li><a href="crearEntrenadora.php">Recluta una entrenadora</a></li>
         </ul>
     </nav>
