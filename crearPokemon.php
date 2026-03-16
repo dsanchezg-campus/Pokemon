@@ -72,7 +72,7 @@ session_start();
         $pokemon = new Pokemon($nombre, $tipo, $elemento, $ataque, $damage, $precision, $vida);
         $_SESSION['pokemones'][] = $pokemon;
         echo "<section class='respuesta'>";
-        echo "<p>Enhorabuena, un $pokemon->MostrarInfo() salvaje ha eclosionado</p>";
+        echo "<p>Enhorabuena, un ".$pokemon->MostrarInfo(). " salvaje ha eclosionado</p>";
         echo "</section>";
     }
     ?>
