@@ -6,7 +6,7 @@ class Pokemon
     private string $tipo;
     private array $elemento;
     private array $ataque;
-    private int $vida;
+    private array $vida;
     private int $nivel;
     public function __construct(string $nombre, string $tipo, array $elemento, string $ataque, int $damage, int $precision, int $vida){
         $this->nombre = $nombre;
@@ -15,7 +15,8 @@ class Pokemon
         $this->ataque['nombre'] = $ataque;
         $this->ataque['damage'] = $damage;
         $this->ataque['precision'] = $precision;
-        $this->vida = $vida;
+        $this->vida['total'] = $vida;
+        $this->vida['actual'] = $vida;
         $this->nivel = 1;
     }
 
@@ -44,7 +45,8 @@ class Pokemon
      */
     public function Evolucionar() : void{
         $this->nivel += 1;
-        $this->vida += 10;
+        $this->vida['actual'] += 10;
+        $this->vida['total'] += 10;
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
-require "Pokemon.php";
-require "Entrenadora.php";
+require_once "Pokemon.php";
+require_once "Entrenadora.php";
 session_start();
 ?>
 <!doctype html>
@@ -51,6 +51,7 @@ session_start();
                 <label for="vida">Vida: </label>
                 <input type="number" name="vida" id="vida" required>
             </article>
+            <input type="submit" value="Eclosionar">
         </form>
     </section>
 
