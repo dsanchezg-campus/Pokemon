@@ -5,18 +5,28 @@ class Pokemon
     private string $nombre;
     private string $tipo;
     private array $elemento;
-    private array $ataque;
+    private array $movimientos;
     private array $vida;
     private int $nivel;
-    public function __construct(string $nombre, string $tipo, array $elemento, string $ataque, int $damage, int $precision, int $vida){
+    private int $ataque;
+    private int $defensa;
+    private int $velocidad;
+    public function __construct(string $nombre, string $tipo, array $elemento, string $movimiento, int $damage, int $precision, int $usos,
+                                int $vida, int $ataque, int $defensa, int $velocidad){
         $this->nombre = $nombre;
         $this->tipo = $tipo;
         $this->elemento = $elemento;
-        $this->ataque['nombre'] = $ataque;
-        $this->ataque['damage'] = $damage;
-        $this->ataque['precision'] = $precision;
+        $this->movimientos[]['nombre'] = $movimiento;
+        $this->movimientos[]['damage'] = $damage;
+        $this->movimientos[]['precision'] = $precision;
+        $this->movimientos[]['usosTotal'] = $usos;
+        $this->movimientos[]['usosActual'] = $usos;
+        $this->movimientos[]['activo'] = true;
         $this->vida['total'] = $vida;
         $this->vida['actual'] = $vida;
+        $this->ataque = $ataque;
+        $this->defensa = $defensa;
+        $this->velocidad = $velocidad;
         $this->nivel = 1;
     }
 
@@ -43,23 +53,28 @@ class Pokemon
      *
      * @return void
      */
-    public function Evolucionar() : void{
+    public function Evolucionar(int $vida, int $ataque, int $defensa, int $velocidad) : void{
         $this->nivel += 1;
-        $this->vida['actual'] += 10;
-        $this->vida['total'] += 10;
+        $this->vida['actual'] += $vida;
+        $this->vida['total'] += $vida;
+        $this->ataque += $ataque;
+        $this->defensa += $defensa;
+        $this->velocidad += $velocidad;
     }
 
     /**
      * El pokemon va a quitarle su ataque a la vida de otro pokemon
      * una probabilidad de acertar dependiendo de su precision
      *
-     * @param Pokemon $pokemon Pokemon que va a ser víctima del ataque
+     * @param Pokemon $pokemonDef Pokemon que va a ser víctima del ataque
+     * @param int $idAtq Ataque ha realizar, posición del array de movimientos
      * @return string Devuelve un mensaje con el movimiento usado
      */
-    public function Atacar(Pokemon $pokemon) : string{
-        if(rand(1, 100) <= $this->ataque['precision']){
-            $pokemon->vida -= $this->ataque['damage'];
-            return "$this->nombre uso ". $this->ataque['nombre']. "haciendo $this->ataque['damage'] de daño";
+    public function Atacar(Pokemon $pokemonDef, int $idAtq ) : string{
+        if(rand(1, 100) <= $this->movimientos[$idAtq]['precision']){
+            $dano = ($this->movimientos[$idAtq]['potencia'] * $this->ataque) / $pokemonDef->defensa;
+            $pokemonDef->vida['actual'] -= $dano;
+            return "$this->nombre uso ". $this->movimientos[$idAtq]['nombre']. "haciendo $dano de daño";
         } else {
             return "$this->nombre uso $this->ataque['nombre'] pero falló";
         }
